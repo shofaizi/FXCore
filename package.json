@@ -1,0 +1,19 @@
+{
+  "name": "fxcore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.22"
+  },
+  "devDependencies": {
+    "mongoose": "^4.8.1",
+    "nodemon": "^1.11.0"
+  }
+}
