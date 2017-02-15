@@ -7,13 +7,19 @@ var bodyParser = require('body-parser');
 var user = require('./routes/user');
 var index = require('./routes/index');
 
-mongoose.connect("mongodb://localhost/fxcore");
+mongoose.connect("mongodb://localhost/fxcore_db");
+
+mongoose.connection.on('connected', function(){
+  console.log("MongoDB Connected!");
+});
 
 app.set('view engine', 'ejs');
 
 app.use('/', index);
 app.use('/user', user);
 
-app.listen(8080, function() {
+var port = process.env.PORT || 8080;
+
+app.listen(port, function() {
   console.log("Listening on port 8080");
 });
