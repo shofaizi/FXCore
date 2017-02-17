@@ -15,6 +15,10 @@ mongoose.connection.on('connected', function(){
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'))
+
 app.use('/', index);
 app.use('/user', user);
 

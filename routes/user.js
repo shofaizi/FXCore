@@ -1,28 +1,26 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var bodyParser = require("body-parser");
 
 router.get('/new', function (req, res, next) {
   res.render('user/new');
 });
 
-router.post('/user', function (req, res, next) {
+router.post('/', function (req, res, next) {
   var user = new User({
     name: req.body.name,
     lastName: req.body.lastName,
     email: req.body.email
   });
+  console.log(req.body.name);
   user.save(function (err, user) {
     if(err) {
-      res.render('user/new', { errors: err})
+      res.render('user/new', {errors: err.errors})
     } else {
-      res.redirect('user/success-signup');
+      res.render('user/success-signup', {user});
     }
   });
 });
-
-// router.get('/user/:id', function(req, res) {
-//   res.send("You're logged in");
-// });
 
 module.exports = router;

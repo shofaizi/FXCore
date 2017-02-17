@@ -1,16 +1,16 @@
 <h1>Sign Up</h1>
 <div>
-  <form method="post" action='/user'>
-    <label>First Name<label>
-      <input type="text" name="">
-    <label>Last Name<label>
-      <input type="text" name="">
-    <label>Email<label>
-      <input type="text" name="">
-    <label>Password<label>
-      <input type="password" name="">
-    <label>Password Confirmation<label>
-      <input type="password" name="">
+  <form method="POST" action='/user'>
+    <label for='name'>First Name</label>
+      <input type="text" id="name" name='name'>
+    <label for='lastName'>Last Name</label>
+      <input type="text" id='lastName' name='lastName'>
+    <label for='email'>Email</label>
+      <input type="text" id='email' name='email'>
+    <label for='password'>Password</label>
+      <input type="password" id='password' name='password'>
+    <label for='password'>Password Confirmation</label>
+      <input type="password" id='password' name='password'>
       <input type="submit" value="Submit">
   </form>
 </div>
