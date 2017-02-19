@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/new', function (req, res, next) {
-  res.render('user/new.ejs');
+  res.render('user/new');
 });
 
 module.exports = router;

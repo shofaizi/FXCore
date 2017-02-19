@@ -3,6 +3,7 @@ var path = require('path');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var LocalStrategy = require('passport-local').Strategy;
 var passport = require('passport');
 
 var user = require('./routes/user');
@@ -21,8 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', index);
 app.use('/user', user);
+
 
 var port = process.env.PORT || 8080;
 

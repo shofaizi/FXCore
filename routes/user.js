@@ -14,7 +14,6 @@ router.post('/', function (req, res, next) {
     lastName: req.body.lastName,
     email: req.body.email
   });
-  console.log(req.body.name);
   user.save(function (err, user) {
     if(err) {
       res.render('user/new', {errors: err.errors})
