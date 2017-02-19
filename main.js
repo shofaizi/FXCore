@@ -3,6 +3,7 @@ var path = require('path');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
 var user = require('./routes/user');
 var index = require('./routes/index');
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+
 
 app.use('/', index);
 app.use('/user', user);

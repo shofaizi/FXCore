@@ -2,6 +2,7 @@ body{
   width: 100%;
   height: 100%;
 }
-body > .footer{
+footer{
   padding-bottom: 10px;
+  background-color: red;
 }
