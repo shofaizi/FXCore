@@ -3,6 +3,7 @@ var path = require('path');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 var passport = require('passport');
 
@@ -10,17 +11,22 @@ var user = require('./routes/user');
 var index = require('./routes/index');
 
 mongoose.connect("mongodb://localhost/fxcore_db");
-
 mongoose.connection.on('connected', function(){
   console.log("MongoDB Connected!");
 });
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
+app.use(Session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

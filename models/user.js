@@ -10,6 +10,7 @@ var UserSchema = new Schema({
 },{timestamp: true});
 
 UserSchema.pre('save', function(next) {
+  debugger
   var user = this;
   this.hashPassword(user.password, function(err, hash) {
     if(err) {
