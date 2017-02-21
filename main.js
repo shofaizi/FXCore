@@ -9,6 +9,7 @@ var passport = require('passport');
 
 var user = require('./routes/user');
 var index = require('./routes/index');
+var fx = require('./routes/fx');
 
 mongoose.connect("mongodb://localhost/fxcore_db");
 mongoose.connection.on('connected', function(){
@@ -22,17 +23,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-app.use(Session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true,
-}));
+// app.use(Session({
+//   secret: 'keyboard cat',
+//   resave: true,
+//   saveUninitialized: true,
+// }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', index);
 app.use('/user', user);
+app.use('/fx', fx);
 
 
 var port = process.env.PORT || 8080;
