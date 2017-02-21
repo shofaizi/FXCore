@@ -34,5 +34,14 @@ UserSchema.methods.hashPassword = function(password, cb){
   });
 };
 
+UserSchema.methods.compare = function(password, next) {
+  bcrypt.compare(password, this.hash, function(err, res) {
+      if(err) {
+        console.log(err);
+      }
+      next(null, res);
+  });
+};
+
 
 module.exports = mongoose.model("User", UserSchema);
