@@ -15,14 +15,12 @@ router.get('/', function(req, res, next) {
       // console.log(arr);
 
       // var a = response.data.rates;
-      var a = JSON.parse(response.data.rates);
-      // var temp = [];
-      // Object.keys(a).forEach(function(key){
-      //   // console.log(key, a[key]);
-      //   temp[key] = a[key];
-      // });
-      console.log(a);
-
+      var a = JSON.stringify(response.data.rates);
+      var temp = [];
+      Object.keys(a).forEach(function(key){
+        // console.log(key, a[key]);
+        temp[key] = a[key];
+      });
       res.render('fx/index', {data: a});
     })
 });
