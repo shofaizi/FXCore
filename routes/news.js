@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var user = require('../models/user');
+var axios = require('axios');
 
-router.get('/news', function(req, res, next) {
+var newsUrl = 'https://newsapi.org/v1/articles?source=financial-times&sortBy=top&apiKey=';
+
+router.get('/', function(req, res, next) {
   axios.get(`${newsUrl}`)
     .then(response => {
-      var news = response.articles;
+      var news = response.data.articles;
       console.log(news);
-      res.render('fx/news'), {data: news};
+      res.render('news/index', {news: news});
     })
     .catch(function(err) {
       return err;

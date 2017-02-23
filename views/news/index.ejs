@@ -1,0 +1,16 @@
+<p>Daily Financial News</p>
+
+<% for(var key in news){ %>
+  <% if(!news.hasOwnProperty(key)) continue; %>
+  <% var obj = news[key]; %>
+    <% for(var prop in obj) {%>
+      <% var innerObj = obj[prop];%>
+        <% for(var item in innerObj){ %>
+        <% var actual = innerObj[item];%>
+          <div>
+            <h1><%= innerObj %></h1>
+            <p><%= actual %></p>
+          </div>
+          <% } %>
+    <% } %>
+<% } %>

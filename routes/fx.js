@@ -3,7 +3,6 @@ var router = express.Router();
 var axios = require('axios');
 
 var latestUrl = 'http://api.fixer.io/latest';
-var newsUrl = 'https://newsapi.org/v1/articles?source=financial-times&sortBy=top&apiKey=f04de76e13e240f5be102e500bac7af2';
 
 router.get('/', function(req, res, next) {
   axios.get(`${latestUrl}`)
