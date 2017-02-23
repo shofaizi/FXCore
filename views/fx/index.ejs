@@ -1,11 +1,11 @@
 <p>FX page</p>
-<ul>
+<ol>
   <% for(var key in data) {%>
     <% if(!data.hasOwnProperty(key)) continue; %>
     <% var obj = data[key]; %>
       <% for(var prop in obj) {%>
         <% if(!obj.hasOwnProperty(prop)) continue; %>
       <% } %>
-      <li><%= obj %><li>
+      <li><%= key%> : <%= obj %></li>
   <% } %>
-</ul>
+</ol>

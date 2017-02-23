@@ -3,6 +3,32 @@ var router = express.Router();
 var User = require('../models/user');
 var bodyParser = require("body-parser");
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+
+passport.use(new LocalStrategy(
+  function(email, password, done) {
+    User.findOne({ email: email }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect email.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
 
 router.get('/new', function (req, res, next) {
   res.render('user/new');
@@ -25,14 +51,16 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('user/login');
+  res.render('user/login', {message: req.flash('error')});
 });
 
-router.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login',
-                                   failureFlash: true })
-);
+router.post('/login', passport.authenticate('local', {
+                                   successRedirect: '/',
+                                   failureRedirect: '/user/login',
+                                   failureFlash: true
+                                 })
+            );
+
 
 router.get('/logout', function(req, res) {
   req.logout();
