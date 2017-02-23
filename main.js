@@ -10,6 +10,7 @@ var flash = require('connect-flash');
 var user = require('./routes/user');
 var index = require('./routes/index');
 var fx = require('./routes/fx');
+var news = require('./routes/news');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/user', user);
 app.use('/fx', fx);
+app.use('/news', news);
 
 
 mongoose.connect("mongodb://localhost/fxcore_db");
