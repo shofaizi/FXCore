@@ -2,13 +2,24 @@ var express = require('express');
 var router = express.Router();
 var axios = require('axios');
 
-var newsUrl = 'https://newsapi.org/v1/articles?source=financial-times&sortBy=top&apiKey=';
+var financialTimesUrl = 'https://newsapi.org/v1/articles?source=financial-times&sortBy=top&apiKey=';
+
+var bloomBergUrl = 'https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=';
 
 router.get('/', function(req, res, next) {
-  axios.get(`${newsUrl}`)
+  let news = [];
+  axios.get(`${financialTimesUrl}`)
     .then(response => {
-      var news = response.data.articles;
-      console.log(news);
+      response.data.articles.forEach( article =>
+      news.push(article))
+    })
+    .catch(function(err) {
+      return err;
+    });
+  axios.get(`${bloomBergUrl}`)
+    .then(response => {
+      response.data.articles.forEach( article =>
+      news.push(article))
       res.render('news/index', {news: news});
     })
     .catch(function(err) {
