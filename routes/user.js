@@ -4,6 +4,7 @@ var User = require('../models/user');
 var bodyParser = require("body-parser");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcryptjs');
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -15,17 +16,21 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use(new LocalStrategy(
+passport.use(new LocalStrategy({usernameField: 'email'},
   function(email, password, done) {
     User.findOne({ email: email }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect email.' });
       }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
+
+      bcrypt.compare(password, user.hashedPassword, function(err, res) {
+        if(res) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+      });
     });
   }
 ));

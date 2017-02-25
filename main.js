@@ -6,6 +6,9 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
+var morgan = require('morgan');
+
+
 
 var user = require('./routes/user');
 var index = require('./routes/index');
@@ -14,6 +17,7 @@ var news = require('./routes/news');
 
 var app = express();
 
+app.use(morgan('combined'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

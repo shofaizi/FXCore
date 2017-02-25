@@ -6,7 +6,8 @@ var UserSchema = new Schema({
   name: {type: String, trim: true, required:true},
   lastName: {type: String, trim: true, required:true},
   email: {type: String, trim:true, unique: true, lowercase: true, required:true},
-  password: {type: String, required:true}
+  password: {type: String, required: true},
+  hashedPassword: {type: String}
 },{timestamp: true});
 
 UserSchema.pre('save', function(next) {
@@ -15,7 +16,7 @@ UserSchema.pre('save', function(next) {
     if(err) {
       return next(err);
     }
-    user.password = hash;
+    user.hashedPassword = hash;
     next();
   });
 });
@@ -34,12 +35,9 @@ UserSchema.methods.hashPassword = function(password, cb){
   });
 };
 
-UserSchema.methods.compare = function(password, next) {
-  bcrypt.compare(password, this.hash, function(err, res) {
-      if(err) {
-        console.log(err);
-      }
-      next(null, res);
+UserSchema.methods.compare = function(password) {
+  return bcrypt.compare(password, this.password, function(err, res) {
+      return res;
   });
 };
 
