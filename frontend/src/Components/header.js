@@ -1,5 +1,5 @@
 import React from 'react';
-import '../header.css';
+import '../css/header.css';
 
 export default class Header extends React.Component {
   render () {
@@ -17,7 +17,7 @@ export default class Header extends React.Component {
               <a className='signin'>Sign In</a>
             </li>
             <li>
-              <div className='gettingStarted'>Get Started</div>
+              <a className='gettingStarted'>Get Started</a>
             </li>
           </ul>
       </div>

@@ -21,17 +21,31 @@
   text-decoration: none;
 }
 
-li a{
+a{
   text-decoration: none;
+  flex-grow: 1;
 }
 
-.gettingStarted{
+.gettingStarted {
   color: #aec649;
   border-radius: 10px;
   background-color: white;
   border: 1px solid #aec649;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.gettingStarted:hover{
+  color: #029edc;
+  border: 1px solid #029edc;
 }
 
 li .signin{
   color: #555555;
+}
+
+@media screen and(max-width:400) {
+  li {
+    flex-direction: column;
+  }
 }
