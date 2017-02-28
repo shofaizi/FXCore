@@ -1,10 +1,37 @@
-.navbar-items {
-  list-style: none;
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 50px;
+  width: 100%;
+  border-bottom: 0.5px dashed black;
+  background-color: #fefefe;
+  align-items: center;
+}
+
+.navbar-items{
   display: flex;
 }
 
-.navbar-items li {
-  font-weight: bold;
-  padding-right: 10px;
-  justify-content: space-around;
+.navbar-items li{
+  list-style: none;
+  padding-right: 30px;
+  color: #029edc;
+  padding-top: 15px;
+  text-decoration: none;
+}
+
+li a{
+  text-decoration: none;
+}
+
+.gettingStarted{
+  color: #aec649;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #aec649;
+}
+
+li .signin{
+  color: #555555;
 }
