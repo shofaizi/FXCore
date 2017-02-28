@@ -1,5 +1,6 @@
 import React from 'react';
-import '../css/header.css';
+import {Link} from 'react-router';
+import '.../css/header.css';
 
 export default class Header extends React.Component {
   render () {
@@ -8,16 +9,16 @@ export default class Header extends React.Component {
         <div className='navbar-logo'>LOGO</div>
           <ul className='navbar-items'>
             <li>
-              <a>FXCore</a>
+              <Link to='/fx'>FXCore</Link>
             </li>
             <li>
-              <a>FXNews</a>
+              <Link to='/news'>FXNews</Link>
             </li>
             <li>
-              <a className='signin'>Sign In</a>
+              <Link to='/user/signin' className='signin'>Sign In</Link>
             </li>
             <li>
-              <a className='gettingStarted'>Get Started</a>
+              <Link to='/user/new' className='gettingStarted'>Get Started</Link>
             </li>
           </ul>
       </div>

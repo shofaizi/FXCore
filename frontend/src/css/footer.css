@@ -7,7 +7,7 @@
   justify-content: center;
 }
 
-.footerParagraph{
+.footer-paragraph{
   padding-top: 40px;
   flex-direction: column;
   width: 300px;
@@ -20,34 +20,48 @@
 input{
   margin-top: 15px;
 }
+input:focus{
+  border-color: 1px solid #fefefe;
+}
 
-.centerColumn{
+.center-column{
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 100px;
 }
 
-.centerColumn a {
+.center-column a {
   color: white;
   font-family: lato;
   text-decoration: none;
   display: flex;
 }
 
-.centerColumn p{
+.center-column p{
   align-items: center;
   color: white;
 }
 
-.rightColumn{
+.right-column{
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 100px;
 }
 
-.rightColumn a {
+.right-column  a {
   color: white;
   display: flex;
   text-decoration: none;
   font-family: lato;
+}
+
+a{
+  padding-bottom: 5px;
+}
+
+@media screen and (min-width:768px) {
+  ul {
+    display: flex;
+    align-items:
+  }
 }
