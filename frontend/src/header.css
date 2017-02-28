@@ -1,0 +1,10 @@
+.navbar-items {
+  list-style: none;
+  display: flex;
+}
+
+.navbar-items li {
+  font-weight: bold;
+  padding-right: 10px;
+  justify-content: space-around;
+}
