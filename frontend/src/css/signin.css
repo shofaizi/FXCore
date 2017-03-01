@@ -1,0 +1,38 @@
+body{
+  background-color: #00a4f5;
+}
+.signup-content h3, h5{
+  display: flex;
+  justify-content: center;
+  color: #fefefe;
+  font-family: "Whitney A", "Whitney B", "Avenir", Helvetica, sans-serif;
+}
+
+.form-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 400px;
+  align-items: center;
+  background-color: #00a4f5;
+  margin: auto;
+}
+
+form input{
+  margin-right: 15px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border: 10px;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 15px 100px;
+
+}
+
+form input:nth-child(5){
+  background-color: #2b2d45;
+  color: #fefefe;
+  border-radius: 10px;
+  padding: 15px 30px;
+  width: 176px;
+}

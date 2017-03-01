@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import App from './App';
+import FxLayout from './components/fx/fxlayout';
+import NewUser from './components/user/new';
+import SignIn from './components/user/signin';
+import News from './components/news/news';
+
 import './css/index.css';
 
 ReactDOM.render((
@@ -9,8 +14,8 @@ ReactDOM.render((
     <Route path='/' component={App}>
       <Route path='fx' component={FxLayout}></Route>
       <Route path='news' component={News}></Route>
-      <Route path='user/new' component={}></Route>
-      <Route path='user/signin' component={}</Route>
+      <Route path='user/new' component={NewUser}></Route>
+      <Route path='user/signin' component={SignIn}></Route>
     </Route>
   </Router>
   ), document.getElementById('root')
