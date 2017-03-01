@@ -15,7 +15,10 @@ body{
   height: 400px;
   align-items: center;
   background-color: #00a4f5;
+  border: 1px solid #fefefe;
+  border-radius: 5px;
   margin: auto;
+  margin-top: 20px;
 }
 
 form input{

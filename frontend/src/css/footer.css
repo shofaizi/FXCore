@@ -1,24 +1,26 @@
 .footer{
   background-color: #2b2d45;
-  height: 250px;
+  height: 200px;
   margin-bottom: 0 auto;
   display: flex;
   padding: 50px 30px;
   justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 40px;
 }
 
 .footer-paragraph{
-  padding-top: 40px;
+  padding-top: 20px;
   flex-direction: column;
   width: 300px;
   height: 90px;
   color: white;
-  font-family: lato;
+  font-family: "Whitney A", "Whitney B", "Avenir", Helvetica, sans-serif;
   text-align: left;
 }
 
 input{
-  margin-top: 15px;
+  margin-top: 5px;
 }
 input:focus{
   border-color: 1px solid #fefefe;
@@ -37,15 +39,19 @@ input:focus{
   display: flex;
 }
 
-.center-column p{
-  align-items: center;
+.center-column p {
+  text-align: left;
   color: white;
 }
 
+.center-column > h5 {
+  display: inline-block;
+}
 .right-column{
   flex-direction: column;
   justify-content: flex-start;
   padding-left: 100px;
+  font-family: "Whitney A", "Whitney B", "Avenir", Helvetica, sans-serif;
 }
 
 .right-column  a {
