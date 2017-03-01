@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-          <main className='col-xs-12-sm-10-md-6-lg-4-xl-2' id='main-content'>
+          <main className='main-content'>
             {this.props.children}
           </main>
         <Footer />

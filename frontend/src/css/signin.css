@@ -39,3 +39,8 @@ form input:nth-child(5){
   padding: 15px 30px;
   width: 176px;
 }
+
+form input:hover:nth-child(5){
+  color: #2b2d45;
+  background-color: #fefefe;
+}

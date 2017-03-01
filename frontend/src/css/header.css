@@ -1,19 +1,19 @@
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   height: 50px;
   width: 100%;
-  border-bottom: 0.5px dashed black;
   background-color: #fefefe;
   align-items: center;
 }
 
-.navbar-items{
+.navbar-items {
   display: flex;
+  align-items:
 }
 
-.navbar-items li{
+.navbar-items li {
   list-style: none;
   padding-right: 30px;
   color: #029edc;
@@ -21,7 +21,7 @@
   text-decoration: none;
 }
 
-a{
+a {
   flex-grow: 1;
 }
 
@@ -34,12 +34,12 @@ a{
   margin-bottom: 5px;
 }
 
-.gettingStarted:hover{
+.gettingStarted:hover {
   color: #029edc;
   border: 1px solid #029edc;
 }
 
-li .signin{
+li .signin {
   color: #555555;
 }
 
