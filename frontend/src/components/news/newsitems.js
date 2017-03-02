@@ -1,5 +1,7 @@
 import React from 'react';
 import R from 'ramda';
+import '../../css/news.css';
+import { Link } from 'react-router';
 
 export default class NewsItems extends React.Component {
 
@@ -24,12 +26,36 @@ export default class NewsItems extends React.Component {
     )
   }
 
+  authorExist(author) {
+    return author ? author : "By Annoymous"
+  }
+
   renderArticles(collection, source) {
     const articlesView = collection.map((article, index) => {
       return (
-        <li key={`article-${index}`}>
-          {article.title}
-          {article.author}
+        <li key={`article-${index}`} className='list'>
+          <div className='article-container'>
+            <div className='image-container'>
+              <img src={article.urlToImage} alt=""/>
+            </div>
+            <div className='article-title'>
+              {article.title}
+            </div>
+            <div className='article-author'>
+              {/* {this.authorExist(article.author).bind} */}
+            </div>
+            <div>
+              <a href={article.url}>Read more..</a>
+            </div>
+            <div className='icons'>
+              <span>
+                <i className="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+              </span>
+              <span>
+                <i className="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
         </li>
       )
     })

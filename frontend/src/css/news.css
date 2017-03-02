@@ -1,0 +1,36 @@
+img {
+  width: 450px;
+  height: 254px;
+}
+
+.list {
+  display: flex;
+  padding: 50px;
+}
+
+.article-container {
+  border: 1px solid white;
+  width: 450px;
+  height: 350px;
+  background-color: #a6d4ea;
+}
+
+.article-title {
+  padding-top: 10px;
+}
+
+ul {
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px 150px;
+}
+
+.icons {
+  float: right;
+  padding-right: 10px;
+}
+
+.icons > span {
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
