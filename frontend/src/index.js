@@ -5,7 +5,7 @@ import App from './App';
 import FxLayout from './components/fx/fxlayout';
 import NewUser from './components/user/new';
 import SignIn from './components/user/signin';
-import News from './components/news/news';
+import News from './components/news/newslayout';
 
 import './css/index.css';
 
