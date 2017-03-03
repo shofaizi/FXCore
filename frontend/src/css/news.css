@@ -11,12 +11,20 @@ img {
 .article-container {
   border: 1px solid white;
   width: 450px;
-  height: 350px;
+  height: 388px;
   background-color: #a6d4ea;
 }
 
 .article-title {
-  padding-top: 10px;
+  font-size: 1em;
+}
+
+.article-title > h4 {
+  color: black;
+}
+
+.article-author {
+  clear: left;
 }
 
 ul {
@@ -33,4 +41,9 @@ ul {
 .icons > span {
   padding-right: 10px;
   margin-bottom: 10px;
+}
+
+.read-more {
+  padding-top: 5px;
+  padding-left: 5px;
 }

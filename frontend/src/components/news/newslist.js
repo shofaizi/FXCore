@@ -1,7 +1,7 @@
 import React from 'react';
+import NewsItem from './newsitem';
 import R from 'ramda';
 import '../../css/news.css';
-import { Link } from 'react-router';
 
 export default class NewsItems extends React.Component {
 
@@ -32,39 +32,22 @@ export default class NewsItems extends React.Component {
 
   renderArticles(collection, source) {
     const articlesView = collection.map((article, index) => {
+      console.log('renderArticles', article)
       return (
-        <li key={`article-${index}`} className='list'>
-          <div className='article-container'>
-            <div className='image-container'>
-              <img src={article.urlToImage} alt=""/>
-            </div>
-            <div className='article-title'>
-              {article.title}
-            </div>
-            <div className='article-author'>
-              {/* {this.authorExist(article.author).bind} */}
-            </div>
-            <div>
-              <a href={article.url}>Read more..</a>
-            </div>
-            <div className='icons'>
-              <span>
-                <i className="fa fa-heart-o fa-2x" aria-hidden="true"></i>
-              </span>
-              <span>
-                <i className="fa fa-bookmark-o fa-2x" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
-        </li>
+        <NewsItem
+          index={index}
+          authorExist={this.authorExist}
+          article={article}
+        />
       )
     })
 
-    return (R.isEmpty(collection) ? this.renderArticlesEmptyView(source) : articlesView)
-  }
+    return (R.isEmpty(collection) ? this.renderArticlesEmptyView(source) : articlesView
+  )}
 
   loadFinancialTimesArticles() {
     this.props.newsAPI.fetchFinancialTimesArticles().then(response => {
+      console.log('financialTimesArticles', response.data)
       this.setState({
         financialTimesArticles: response.data.articles
       })
@@ -73,6 +56,7 @@ export default class NewsItems extends React.Component {
 
   loadBloomgbergArticles() {
     this.props.newsAPI.fetchBloombergArticles().then(response => {
+      console.log('bloomberg', response.data)
       this.setState({
         bloombergArticles: response.data.articles
       })
@@ -88,13 +72,9 @@ export default class NewsItems extends React.Component {
           {this.renderArticles(articles, source)}
         </ul>
       </div>
+
     )
   }
-
-  // handleTestButtonClick() {
-  //   console.log("THIS", this)
-  //   console.log("CLICKED", this.state.liked)
-  // }
 
   render() {
     const {financialTimesArticles, bloombergArticles} = this.state

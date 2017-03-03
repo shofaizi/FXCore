@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsItems from './newsitems';
+import NewsList from './newslist';
 import NewsAPI from '../../utils/news_api'
 
 const newsAPI = new NewsAPI()
@@ -9,7 +9,7 @@ export default class News extends React.Component {
     return (
       <div className='header'>
         <h2>Recent Financial News</h2>
-        <NewsItems newsAPI={newsAPI} />
+        <NewsList newsAPI={newsAPI} />
       </div>
     )
   }
