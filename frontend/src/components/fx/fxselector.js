@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 let latestUrl = 'http://api.fixer.io/latest';
-// let latestWithBase = 'http://api.fixer.io/latest' + `${base}`;
 
 export default class Selector extends React.Component {
   constructor(props) {
@@ -17,6 +16,7 @@ export default class Selector extends React.Component {
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onBaseChange = this.onBaseChange.bind(this);
   }
+
 
   makeRequest () {
     axios.get(`${latestUrl}`)
@@ -35,16 +35,15 @@ export default class Selector extends React.Component {
   }
 
   onBaseChange (e) {
-    // console.log(e)
     this.setState({base: e.target.value})
-    console.log("The state for base is:" + this.state.base)
   }
 
   onSubmitHandler (e) {
     e.preventDefault();
-    console.log(this.state.base)
-    // this.setState({base: this.state.base})
-    // this.setState({base: e.target.value})
+    axios.get(`http://api.fixer.io/latest?base=${this.state.base}`)
+      .then(response => {
+        console.log(response.data.rates);
+      })
   }
 
   render () {
