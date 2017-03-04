@@ -5,6 +5,10 @@
   font-family: "Whitney A", "Whitney B", "Avenir", Helvetica, sans-serif;
 }
 
+.signup-layout {
+  background-color: #00a4f5;
+}
+
 .form-wrapper{
   display: flex;
   flex-direction: column;
@@ -40,4 +44,13 @@ form input:nth-child(5){
 form input:hover:nth-child(5){
   color: #2b2d45;
   background-color: #fefefe;
+}
+
+.signup-layout {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.signup-content {
+  height: 100%;
 }

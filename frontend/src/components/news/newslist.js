@@ -8,8 +8,6 @@ export default class NewsItems extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      saved: false,
-      liked: false,
       financialTimesArticles: [],
       bloombergArticles: []
     };
@@ -27,12 +25,11 @@ export default class NewsItems extends React.Component {
   }
 
   authorExist(author) {
-    return author ? author : "By Annoymous"
+    return author ? author : " Annoymous"
   }
 
   renderArticles(collection, source) {
     const articlesView = collection.map((article, index) => {
-      console.log('renderArticles', article)
       return (
         <NewsItem
           index={index}
@@ -47,7 +44,6 @@ export default class NewsItems extends React.Component {
 
   loadFinancialTimesArticles() {
     this.props.newsAPI.fetchFinancialTimesArticles().then(response => {
-      console.log('financialTimesArticles', response.data)
       this.setState({
         financialTimesArticles: response.data.articles
       })
@@ -56,7 +52,6 @@ export default class NewsItems extends React.Component {
 
   loadBloomgbergArticles() {
     this.props.newsAPI.fetchBloombergArticles().then(response => {
-      console.log('bloomberg', response.data)
       this.setState({
         bloombergArticles: response.data.articles
       })
