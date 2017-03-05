@@ -1,5 +1,5 @@
 img {
-  width: 450px;
+  width: 100%;
   height: 254px;
 }
 
@@ -11,9 +11,15 @@ img {
 .article-container {
   border: 1px solid white;
   width: 450px;
-  height: 360px;
-  background-color: #a6d4ea;
+  height: 379px;
+  background-color: #ffffff;
   position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  transition-timing-function: ease-out;
+}
+
+.article-container:hover {
+  border: 4px solid #1263ac;
 }
 
 .article-title {
@@ -34,6 +40,10 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 30px 150px;
+}
+
+.article-layout > ul {
+  background-color: #f4f4f4;
 }
 
 .icons {

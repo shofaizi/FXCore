@@ -6,6 +6,7 @@ import FxLayout from './components/fx/fxlayout';
 import NewUser from './components/user/new';
 import SignIn from './components/user/signin';
 import News from './components/news/newslayout';
+// import Welcome from './components/home/welcome';
 
 import './css/index.css';
 

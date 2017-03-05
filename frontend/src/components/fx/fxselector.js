@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import '../../css/fx.css';
 
 let latestUrl = 'http://api.fixer.io/latest';
 
@@ -11,12 +12,14 @@ export default class Selector extends React.Component {
       rates: {},
       currencies: [],
       firstBase: '',
-      secondBase: ''
+      secondBase: '',
+      results: false
     }
-    this.onValueChange = this.onValueChange.bind(this);
+    this.onInputValueChange = this.onInputValueChange.bind(this);
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.onFirstBaseChange = this.onFirstBaseChange.bind(this);
     this.onSecondBaseChange = this.onSecondBaseChange.bind(this);
+    this.checkSumbit = this.checkSumbit.bind(this);
   }
 
   makeRequest () {
@@ -30,7 +33,7 @@ export default class Selector extends React.Component {
     this.makeRequest();
   }
 
-  onValueChange (e) {
+  onInputValueChange (e) {
     this.setState({value: e.target.value});
     console.log(this.state.value)
   }
@@ -53,59 +56,70 @@ export default class Selector extends React.Component {
       .then(response => {
         console.log(response.data.rates);
       })
+    this.setState({results: !this.state.results})
   }
 
-  // renderResults() {
-  //   return (
-  //     <Result
-  //       onSubmitHandler={this.onSubmitHandler}
-  //     />
-  //   )
-  // }
+  checkSumbit() {
+    if(this.state.results === true) {
+      return document.querySelector('result-container').style.display = 'block';
+    }
+  }
 
   render () {
     return (
       <div>
-        <div className='result-container'>
-          <h2>FX Currency Converter:{this.state.firstBase} to {this.state.secondBase}</h2>
-          <h3>{this.state.value} =</h3>
-          {/* <h1>{this.props.convertedValue}</h1> */}
-          <span>{this.state.secondBase}</span>
-          <div className='left-summary-col'>
-            <h3>{this.state.value}{this.state.firstBase} = {this.state.secondBase}</h3>
-          </div>
-          <div className='right-summary-col'>
-            <h3>{this.state.value}{this.state.secondBase} = {this.state.firstBase}</h3>
-          </div>
+        <div className='result-header'>
+          <h2>FX Currency Converter:{this.state.firstBase} <span>to</span>{this.state.secondBase}</h2>
         </div>
+
         <div className='fx-form'>
           <form onSubmit={this.onSubmitHandler}>
             <div className='selector'>
-              <div>
-                <input type='text' placeholder='Enter value' onChange={this.onValueChange}></input>
+              <div className='input-layout'>
+                <div className='input-field'>
+                  <input type='text' placeholder='Enter value' onChange={this.onInputValueChange}></input>
+                </div>
+                <div className='input-field'>
+                  <select onChange={this.onFirstBaseChange}>
+                    {this.state.currencies.map((object, i) => {
+                        return <option key={i}>{object}</option>;
+                    })}
+                  </select>
+                </div>
+                <i className="fa fa-arrows-h fa-2x" aria-hidden="true"></i>
+                <div>
+                  <select onChange={this.onSecondBaseChange}>
+                    {this.state.currencies.map((object, i) => {
+                        return <option key={i}>{object}</option>;
+                    })}
+                  </select>
+                </div>
               </div>
               <div>
-                <select onChange={this.onFirstBaseChange}>
-                  {this.state.currencies.map((object, i) => {
-                      return <option key={i}>{object}</option>;
-                  })}
-                </select>
+                <input type='submit' value="->"></input>
               </div>
-              <span>-></span>
-              <div>
-                <select onChange={this.onSecondBaseChange}>
-                  {this.state.currencies.map((object, i) => {
-                      return <option key={i}>{object}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-            <div>
-              <input type='submit' value="->"></input>
             </div>
           </form>
         </div>
-      </div>
+
+        <div className='result-container'>
+          <div className='result-main'>
+            <div className='result-convert'>
+              <h3>{this.state.value}{this.state.firstBase}=</h3>
+              <h3 id='result-display'>75.2890</h3>
+              <h3>{this.state.secondBase}</h3>
+            </div>
+
+            {/* <div className='left-summary-col'>
+              <h5 id='header5'>1 {this.state.firstBase} = {this.state.secondBase}</h5>
+            </div>
+
+            <div className='right-summary-col'>
+            <h3>{this.state.value}{this.state.secondBase} = {this.state.firstBase}</h3>
+          </div> */}
+          </div>
+        </div>
+    </div>
     )
   }
 }

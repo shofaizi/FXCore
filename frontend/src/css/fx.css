@@ -1,0 +1,47 @@
+/*.result-container > h2, h3 {
+  color: #002272
+}*/
+
+.result-container {
+  border: 1px solid #000;
+  display: none;
+}
+
+.result-header {
+  border: 1px solid #000;
+  display: flex;
+  justify-content: space-around;
+}
+
+.result-convert {
+  display: flex;
+  flex-direction: row;
+}
+
+.result-convert {
+  padding-top: 100px;
+  padding-left: 80px;
+}
+
+#result-display {
+  color: #002272;
+}
+
+.left-summary-col {
+  display: flex;
+  flex-direction: column;
+}
+
+#header5 {
+  color: #000;
+  font-family: inherit;
+}
+
+.selector {
+  display: flex;
+  flex-direction: row;
+}
+
+.fx-form {
+  padding-top: 40px;
+}

@@ -20,6 +20,11 @@
   text-decoration: none;
 }
 
+li > a:hover {
+  border-bottom: 5px solid #2b2d45;
+  text-decoration: none;
+}
+
 a {
   flex-grow: 1;
 }
@@ -31,6 +36,7 @@ a {
   border: 1px solid #aec649;
   padding: 8px;
   margin-bottom: 5px;
+  text-decoration: none;
 }
 
 .gettingStarted:hover {

@@ -60,9 +60,8 @@ export default class NewsItems extends React.Component {
 
   renderArticleSection(articles, source) {
     return (
-      <div>
+      <div className='article-layout'>
         <h2>{source}</h2>
-        <hr/>
         <ul>
           {this.renderArticles(articles, source)}
         </ul>
