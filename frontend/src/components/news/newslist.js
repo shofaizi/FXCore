@@ -69,6 +69,7 @@ export default class NewsItems extends React.Component {
 
     )
   }
+  
 
   render() {
     const {financialTimesArticles, bloombergArticles} = this.state
