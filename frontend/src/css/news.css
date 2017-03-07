@@ -74,9 +74,11 @@ ul {
   color: white;
   margin-bottom: 0px;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   padding-top: 10px;
+  margin-top:0px;
 }
+
 
 .news-items {
   margin-bottom: 0px;

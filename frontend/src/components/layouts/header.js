@@ -6,7 +6,9 @@ export default class Header extends React.Component {
   render () {
     return (
       <div className='navbar'>
-        <div className='navbar-logo'>LOGO</div>
+        <div className='navbar-logo'>
+          <img src='fxcore.png' />
+        </div>
           <ul className='navbar-items'>
             <li>
               <Link to='/fx'>FXCore</Link>

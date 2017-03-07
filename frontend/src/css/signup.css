@@ -53,4 +53,31 @@ form input:hover:nth-child(5){
 
 .signup-content {
   height: 100%;
+  position: relative;
+}
+
+.animation-feature {
+  font-family: "Whitney A", "Whitney B", "Avenir", Helvetica, sans-serif;
+}
+
+.border-line {
+  border-bottom: 1px solid grey;
+}
+
+.signup-animation {
+  position: absolute;
+  left: 150px;
+  top: 200px;
+  color: white;
+  animation: x 5s forwards;
+}
+
+@keyframes x {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-70px)
+    }
 }

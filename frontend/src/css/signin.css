@@ -1,0 +1,22 @@
+.logo-display {
+  margin-top: 0px;
+  margin-bottom: 0;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-display > img {
+  max-width: 348px;
+  max-height: 100px;
+}
+
+.singin-form {
+ 
+}
+
+.signin-layout{
+  background-color: #00a4f5;
+  display: flex;
+  flex-direction: column;
+}

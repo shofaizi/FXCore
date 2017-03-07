@@ -6,6 +6,7 @@
   width: 100%;
   background-color: #fefefe;
   align-items: center;
+  box-shadow: 0px 1px 5px #888888
 }
 
 .navbar-items {
@@ -46,6 +47,17 @@ a {
 
 li .signin {
   color: #555555;
+}
+
+.navbar-logo {
+  width: 200px;
+  height: 100%;
+}
+
+.navbar-logo > img {
+  /*background-repeat: no-repeat;*/
+  /*image-resolution: 200dpi;*/
+  height: 100%;
 }
 
 @media screen and(max-width:400) {
