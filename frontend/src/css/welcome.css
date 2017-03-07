@@ -1,7 +1,40 @@
-.cover-content > img {
-  height: 100vh;
+.cover-content{
+  position: relative;
+  height: 500px;
+  background-image: url('../../public/cover.jpeg');
+  background-size: 100% 600px;
+  background-repeat: no-repeat;
 }
 
-/*.cover-content {
-  width:100%;
-}*/
+.welcome-animation {
+  position: absolute;
+  left: 150px;
+  top: 200px;
+  color: white;
+  animation: x 5s forwards;
+}
+
+.getStarted {
+  background-color: #0691f2;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+}
+
+.anchor {
+  color: white;
+  text-decoration: none;
+}
+
+@keyframes x {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-100px)
+    }
+}
