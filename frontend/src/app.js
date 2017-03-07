@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Header />
           <main className='main-content'>
-            {/* <Welcome /> */}
+            <Welcome />
             {this.props.children}
           </main>
         <Footer />

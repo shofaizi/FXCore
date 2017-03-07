@@ -8,7 +8,7 @@ export default class News extends React.Component {
   render () {
     return (
       <div className='header'>
-        <h2>Recent Financial News</h2>
+        <h2 id='recent-news'>Recent Financial News</h2>
         <NewsList newsAPI={newsAPI} />
       </div>
     )

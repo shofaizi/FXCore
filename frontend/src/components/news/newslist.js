@@ -61,7 +61,7 @@ export default class NewsItems extends React.Component {
   renderArticleSection(articles, source) {
     return (
       <div className='article-layout'>
-        <h2>{source}</h2>
+        <h2 className='article-source'>{source}</h2>
         <ul>
           {this.renderArticles(articles, source)}
         </ul>
@@ -69,7 +69,7 @@ export default class NewsItems extends React.Component {
 
     )
   }
-  
+
 
   render() {
     const {financialTimesArticles, bloombergArticles} = this.state
@@ -81,6 +81,11 @@ export default class NewsItems extends React.Component {
       <div className='news-content'>
         <div className='news-items'>
           {this.renderArticleSection(financialTimesArticles, "Financial Times")}
+        </div>
+        <div className='backgroundImage'>
+          <img src='world.jpeg' />
+        </div>
+        <div className='news-items'>
           {this.renderArticleSection(bloombergArticles, "Bloomberg")}
         </div>
       </div>

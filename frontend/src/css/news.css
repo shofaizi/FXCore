@@ -62,3 +62,28 @@ ul {
   padding-top: 5px;
   padding-left: 10px;
 }
+
+.article-source {
+  background-color: #00a4f5;
+  padding-left: 50px;
+  position: absolute;
+}
+
+#recent-news{
+  background-color: #00a4f5;
+  color: white;
+  margin-bottom: 0px;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.news-items {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.backgroundImage > img {
+  height: 70vh;
+  margin-top: 0px;
+}
