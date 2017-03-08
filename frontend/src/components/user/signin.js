@@ -9,13 +9,15 @@ export default class SignIn extends React.Component {
           <img src='fxcore.png'/>
         </div>
 
-        <div className='signin-form'>
-          <form method="POST" action='/user/signin'>
-            <input type='text' id='email' name='email' placeholder='Enter Email Address'></input>
+        <div className='signin-wrapper'>
+          <form method="POST" action='/user/signin' className='signin-form'>
+            <input type='text' id='email' name='email' placeholder='Email Address'></input>
             <input type='text' id='password' name='password' placeholder='Enter Password'></input>
-            <input type='checkbox'></input>
-            <label>Remember Me</label>
-            <input type='submit' value='Join'></input>
+            <div className='submit-section'>
+              <input type='checkbox'></input>
+              <label>Remember Me</label>
+              <input type='submit' value='Join' className='join'></input>
+            </div>
           </form>
         </div>
       </div>

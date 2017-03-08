@@ -8,7 +8,7 @@ export default class Welcome extends React.Component {
       <div>
         <div className='cover-content'>
           <div className='welcome-animation'>
-            <h1>Hi, were FXCore</h1>
+            <h1>Hi, we're FXCore</h1>
             <h4>Your friendly Financial Platform</h4>
             <div className='getStarted'>
               <Link to={'/user/new'} className='anchor'>Get Started</Link>
