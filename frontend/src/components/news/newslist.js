@@ -83,7 +83,7 @@ export default class NewsItems extends React.Component {
           {this.renderArticleSection(financialTimesArticles, "Financial Times")}
         </div>
         <div className='backgroundImage'>
-          <img src='world.jpeg' />
+          <img src='world.jpeg' alt="#"/>
         </div>
         <div className='news-items'>
           {this.renderArticleSection(bloombergArticles, "Bloomberg")}

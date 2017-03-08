@@ -6,7 +6,7 @@ export default class SignIn extends React.Component {
     return (
       <div className='signin-layout'>
         <div className='logo-display'>
-          <img src='fxcore.png'/>
+          <img src='fxcore.png' alt="#"/>
         </div>
 
         <div className='signin-wrapper'>

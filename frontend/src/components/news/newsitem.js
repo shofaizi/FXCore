@@ -23,6 +23,7 @@ export default class NewsItem extends React.Component {
     date.toLocaleString('en-US');
   }
 
+
   render () {
     return (
       <li key={`article-${this.index}`} className='list'>
@@ -45,10 +46,10 @@ export default class NewsItem extends React.Component {
             </div>
             <div className='icons'>
               <span onClick={this.onLikeChange}>
-                <i id='heart' className="fa fa-heart fa-2x" aria-hidden="true" style={{color: this.state.liked ? 'red' : 'white'}}></i>
+                <i id='heart' className="fa fa-heart-o fa-2x" aria-hidden="true" style={{color: this.state.liked ? 'red' : ''}}></i>
               </span>
               <span onClick={this.onBookMarkChange}>
-                <i className="fa fa-bookmark fa-2x" aria-hidden="true" style={{color: this.state.bookmarked ? 'black' : 'white'}}></i>
+                <i className="fa fa-bookmark-o fa-2x" aria-hidden="true" style={{color: this.state.bookmarked ? 'blue' : ''}}></i>
               </span>
             </div>
           </div>

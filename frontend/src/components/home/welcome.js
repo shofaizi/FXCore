@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import '../../css/welcome.css';
+import Info from './info';
 
 export default class Welcome extends React.Component {
   render () {
@@ -14,7 +15,8 @@ export default class Welcome extends React.Component {
               <Link to={'/user/new'} className='anchor'>Get Started</Link>
             </div>
           </div>
-        </div>
+        </div>,
+      <Info />
       </div>
     )
   }

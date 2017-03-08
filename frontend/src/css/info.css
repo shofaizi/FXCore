@@ -1,0 +1,26 @@
+.section-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.info-container{
+  padding-right: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.info-image {
+  max-width: 230px;
+  max-height: 200px;
+  align-items: center;
+
+}
+
+.info-image > img {
+  align-content: center;
+}
+
+.info-text {
+  max-width: 250px;
+}
