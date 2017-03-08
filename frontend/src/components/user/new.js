@@ -2,7 +2,6 @@ import React from 'react';
 import '../../css/signup.css';
 
 export default class New extends React.Component {
-
   render() {
     return (
       <div className='signup-layout'>

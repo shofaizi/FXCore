@@ -32,7 +32,15 @@ function secondAjax(){
     });
 }
 
-router.get('/', function(req, res, next) {
+function loggedIn(req, res, next) {
+  if(req.user){
+    next();
+  } else {
+    res.redirect('/user/login')
+  }
+}
+
+router.get('/', loggedIn, function(req, res, next) {
   axios.all([firstAjax(), secondAjax()])
   .then(response => {
     // Both requests are now complete

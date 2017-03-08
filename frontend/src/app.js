@@ -3,6 +3,7 @@ import './css/App.css';
 import Header from './components/layouts/header';
 import Footer from './components/layouts/footer';
 
+
 class App extends Component {
   render() {
     return (
@@ -11,7 +12,7 @@ class App extends Component {
           <main className='main-content'>
             {this.props.children}
           </main>
-          <Footer />
+        <Footer />
       </div>
     );
   }
