@@ -17,7 +17,7 @@ export default class New extends React.Component {
                 <input type='text' id='name' name='firstName' placeholder='First Name'></input>
                 <input type='text' id='lastName' name='lastName' placeholder='Last Name'></input>
                 <input type='text' id='email' name='email' placeholder='Enter Email Address'></input>
-                <input type='text' id='password' name='password' placeholder='Enter Password'></input>
+                <input type='password' id='password' name='password' placeholder='Enter Password'></input>
                 <input type='submit' value='Join'></input>
               </form>
             </div>

@@ -60,8 +60,23 @@ li .signin {
   height: 100%;
 }
 
-@media screen and(max-width:400) {
-  li {
-    flex-direction: column;
+@media screen and (max-width:480px) {
+  .navbar-logo {
+    /*display: flex;*/
+    flex-direction: row;
+  }
+  .navbar {
+    /*flex-direction: column;*/
+    margin-bottom: 100px;
+  }
+  .navbar-items {
+    display: block;
+    padding: 0 0 10px 0;
+  }
+  .navbar-items > li {
+    border-bottom: 1px solid grey;
+    padding: 0 0 0 0;
+    display: block;
+    flex-wrap: wrap;
   }
 }
