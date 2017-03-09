@@ -1,7 +1,7 @@
   var Currency = require('../models/currency');
   var mongoose = require('mongoose');
   var axios    = require('axios');
-  var apiURL = 'http://apilayer.net/api/historical?access_key=a0c2d7496af831a2b5ce32b081416a65&date=2017-02-20'
+  var apiURL = 'http://apilayer.net/api/historical?access_key=ac3735d61ff5eadd7a4906e63cb9437f&date=2017-02-20'
 
   mongoose.connect("mongodb://localhost/fxcore_db", function(err, res){
     if(err) throw err;

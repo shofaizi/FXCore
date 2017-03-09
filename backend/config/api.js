@@ -1,3 +1,3 @@
-var apiKey = 'bd8b1e0a25354d58addf788e98712b82';
+var apiKey = '9205fc2833f344e388425611a78ba5c8';
 
 exports.api = apiKey;
