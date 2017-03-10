@@ -1,20 +1,19 @@
-var express = require('express');
-var cors = require('cors');
-var path = require('path');
-var mongoose = require('mongoose');
+var express   = require('express');
+var cors      = require('cors');
+var path      = require('path');
+var mongoose  = require('mongoose');
 var bodyParser = require('body-parser');
-var session = require('express-session');
-var passport = require('passport');
+var session   = require('express-session');
+var passport  = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var flash = require('connect-flash');
-var morgan = require('morgan');
+var flash     = require('connect-flash');
+var morgan    = require('morgan');
+var requestCurrency = require('./config/requestCurrency');
 
-
-
-var user = require('./routes/user');
+var user  = require('./routes/user');
 var index = require('./routes/index');
-var fx = require('./routes/fx');
-var news = require('./routes/news');
+var fx    = require('./routes/fx');
+var news  = require('./routes/news');
 
 var app = express();
 
@@ -54,6 +53,8 @@ mongoose.connect("mongodb://localhost/fxcore_db");
 mongoose.connection.on('connected', function(){
   console.log("MongoDB Connected!");
 });
+
+requestCurrency.laterFunction();
 
 var port = process.env.PORT || 8080;
 
