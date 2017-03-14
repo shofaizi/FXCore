@@ -1,25 +1,40 @@
 import React from 'react';
 import '../../css/signin.css';
 import axios from 'axios';
+import FormInput from './formInput';
+import { Redirect } from 'react-router';
 
 export default class SignIn extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      data: []
+      email: '',
+      password: ''
     }
     this.postData = this.postData.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  postData(data) {
-    axios.post(`http://localhost:8080/user/login`, data)
+  postData(e) {
+    e.preventDefault();
+    const {email, password} = this.state;
+    axios.post(`http://localhost:8080/user/login`, {email, password})
       .then(response => {
-        this.setState({ data: response })
+        localStorage.setItem('userToken', response.data)
+        return (
+          <Redirect to={{
+            pathname: '/',
+            state: { from: this.props.location }
+          }}/>
+        )
       })
       .catch(err => {
         console.error(err);
-        // debugger
       });
+  }
+
+  onChange(params) {
+    this.setState(params)
   }
 
   render() {
@@ -31,8 +46,20 @@ export default class SignIn extends React.Component {
 
         <div className='signin-wrapper'>
           <form onSubmit={this.postData}  className='signin-form'>
-            <input type='text' id='email' name='email' placeholder='Email Address'></input>
-            <input type='password' id='password' name='password' placeholder='Enter Password'></input>
+            <FormInput
+              formType={'text'}
+              attributeName={'email'}
+              placeholder='Email Address'
+              value={this.state.email}
+              onChange={this.onChange}
+            />
+            <FormInput
+              formType={'password'}
+              attributeName={'password'}
+              placeholder={'Enter Password'}
+              value={this.state.password}
+              onChange={this.onChange}
+            />
             <div className='submit-section'>
               <input type='checkbox'></input>
               <label>Remember Me</label>

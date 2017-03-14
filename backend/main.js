@@ -9,6 +9,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash     = require('connect-flash');
 var morgan    = require('morgan');
 var requestCurrency = require('./config/requestCurrency');
+var cors = require('express-cors');
 
 var user  = require('./routes/user');
 var index = require('./routes/index');
@@ -29,25 +30,22 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
+// app.use(cors());
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+})
 
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
-
-// app.options('*', cors());
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
 app.use('/', index);
 app.use('/user', user);
 app.use('/fx', fx);
 app.use('/news', news);
-
 
 mongoose.connect("mongodb://localhost/fxcore_db");
 mongoose.connection.on('connected', function(){

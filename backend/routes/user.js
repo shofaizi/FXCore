@@ -5,6 +5,8 @@ var bodyParser = require("body-parser");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+var config = require('../config/index.js');
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -16,17 +18,20 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use(new LocalStrategy({usernameField: 'email'},
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  },
   function(email, password, done) {
     User.findOne({ email: email }, function(err, user) {
       if (err) { return done(err); }
       if (!user) {
-        return done(null, false, { message: 'Incorrect email.' });
+        return done(null, false, { message: 'Incorrect email or password' });
       }
 
       bcrypt.compare(password, user.hashedPassword, function(err, res) {
         if(res) {
-          return done(null, user);
+          return done(null,user);
         } else {
           return done(null, false, { message: 'Incorrect password.' });
         }
@@ -59,12 +64,18 @@ router.get('/login', function(req, res, next) {
   res.render('user/login', {message: req.flash('error')});
 });
 
-router.post('/login', passport.authenticate('local', {
-                                   successRedirect: '/',
-                                   failureRedirect: '/user/login',
-                                   failureFlash: true
-                                 })
-            );
+router.post(
+  '/login',
+  passport.authenticate('local'),
+  function (req, res, next) {
+    const token = jwt.sign(
+      {user: req.body.user},
+      config.secret,
+      {expiresIn: 10000}
+    );
+    res.json(token);
+  }
+)
 
 
 router.get('/logout', function(req, res) {
