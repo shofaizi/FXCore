@@ -1,7 +1,39 @@
 import React from 'react';
+import axios from 'axios';
+import { Router, browserHistory } from 'react-router';
+import Input from './input';
 import '../../css/signup.css';
 
 export default class New extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
+    }
+    this.postData = this.postData.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  postData(e) {
+    e.preventDefault();
+    const {firstName, lastName, email, password} = this.state;
+    axios.post(`http://localhost:8080/user`, {firstName, lastName, email, password})
+      .then(response => {
+        localStorage.setItem('userToken', response.data)
+        browserHistory.push('/')
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  onChange(params) {
+    this.setState(params)
+  }
+
   render() {
     return (
       <div className='signup-layout'>
@@ -13,11 +45,35 @@ export default class New extends React.Component {
             <h1 className='animation-feature'>the latest features</h1>
           </div>
             <div className='form-wrapper'>
-              <form method="POST" action='/user'>
-                <input type='text' id='name' name='firstName' placeholder='First Name'></input>
-                <input type='text' id='lastName' name='lastName' placeholder='Last Name'></input>
-                <input type='text' id='email' name='email' placeholder='Enter Email Address'></input>
-                <input type='password' id='password' name='password' placeholder='Enter Password'></input>
+              <form onSubmit={this.postData}>
+                <Input
+                  formType={'text'}
+                  attributeName={'firstName'}
+                  placeholder={'First Name'}
+                  value={this.state.firstName}
+                  onChange={this.onChange}
+                />
+                <Input
+                  formType={'text'}
+                  attributeName={'lastName'}
+                  placeholder={'Last Name'}
+                  value={this.state.lastName}
+                  onChange={this.onChange}
+                />
+                <Input
+                  formType={'text'}
+                  attributeName={'email'}
+                  placeholder={'Enter Email'}
+                  value={this.state.email}
+                  onChange={this.onChange}
+                />
+                <Input
+                  formType={'password'}
+                  attributeName={'password'}
+                  placeholder={'Enter Password'}
+                  value={this.state.password}
+                  onChange={this.onChange}
+                />
                 <input type='submit' value='Join'></input>
               </form>
             </div>

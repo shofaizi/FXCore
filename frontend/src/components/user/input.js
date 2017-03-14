@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormInput = ({ onChange, formType, placeholder, value, attributeName}) => {
+const Input = ({ onChange, formType, placeholder, value, attributeName }) => {
  const onChangeWrapper = (e) => {
    e.preventDefault()
    const valueFromInput = e.target.value
@@ -8,8 +8,6 @@ const FormInput = ({ onChange, formType, placeholder, value, attributeName}) => 
    params[attributeName] = valueFromInput
 
    onChange(params)
-  //  es6 short cut for declaring object with a dynamic key
-  //  onChange({[attributeName]: valueFromInput})
  }
   return (
     <input
@@ -20,4 +18,4 @@ const FormInput = ({ onChange, formType, placeholder, value, attributeName}) => 
   )
 }
 
-export default FormInput;
+export default Input;

@@ -2,7 +2,7 @@ import React from 'react';
 import '../../css/signin.css';
 import axios from 'axios';
 import FormInput from './formInput';
-import { Redirect } from 'react-router';
+import { Router, browserHistory }  from 'react-router';
 
 export default class SignIn extends React.Component {
   constructor(props){
@@ -21,12 +21,7 @@ export default class SignIn extends React.Component {
     axios.post(`http://localhost:8080/user/login`, {email, password})
       .then(response => {
         localStorage.setItem('userToken', response.data)
-        return (
-          <Redirect to={{
-            pathname: '/',
-            state: { from: this.props.location }
-          }}/>
-        )
+        browserHistory.push('/')
       })
       .catch(err => {
         console.error(err);
@@ -37,6 +32,7 @@ export default class SignIn extends React.Component {
     this.setState(params)
   }
 
+  
   render() {
     return (
       <div className='signin-layout'>
