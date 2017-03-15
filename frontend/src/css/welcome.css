@@ -1,7 +1,7 @@
 .cover-content{
   position: relative;
   height: 500px;
-  background-image: url('../../public/cover.jpeg');
+  background-image: url('../images/cover.jpeg');
   background-size: 100% 600px;
   background-repeat: no-repeat;
 }

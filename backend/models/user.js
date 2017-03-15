@@ -7,7 +7,6 @@ var UserSchema = new Schema({
   lastName: {type: String, trim: true, required:true},
   email: {type: String, trim:true, unique: true, lowercase: true, required:true},
   password: {type: String, required: true},
-  hashedPassword: {type: String}
 },{timestamp: true});
 
 UserSchema.pre('save', function(next) {
@@ -16,7 +15,7 @@ UserSchema.pre('save', function(next) {
     if(err) {
       return next(err);
     }
-    user.hashedPassword = hash;
+    user.password = hash;
     next();
   });
 });

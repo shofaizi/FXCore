@@ -51,11 +51,18 @@ router.post('/', function (req, res, next) {
     email: req.body.email,
     password: req.body.password
   });
+  console.log(user);
   user.save(function (err, user) {
     if(err) {
       res.render('user/new', {errors: err.errors})
     } else {
-      res.render('user/success-signup', {user});
+      const token = jwt.sign(
+        {user: req.body.user},
+        config.secret,
+        {expiresIn: 10000}
+      );
+      console.log('Post sign up');
+      res.json(token);
     }
   });
 });
@@ -68,11 +75,13 @@ router.post(
   '/login',
   passport.authenticate('local'),
   function (req, res, next) {
+    console.log('Post passport');
     const token = jwt.sign(
       {user: req.body.user},
       config.secret,
       {expiresIn: 10000}
     );
+    console.log(req.body);
     res.json(token);
   }
 )

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Router, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import Input from './input';
 import '../../css/signup.css';
 
@@ -8,7 +8,7 @@ export default class New extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: '',
+      name: '',
       lastName: '',
       email: '',
       password: ''
@@ -19,10 +19,10 @@ export default class New extends React.Component {
 
   postData(e) {
     e.preventDefault();
-    const {firstName, lastName, email, password} = this.state;
-    axios.post(`http://localhost:8080/user`, {firstName, lastName, email, password})
+    const {name, lastName, email, password} = this.state;
+    axios.post(`http://localhost:8080/user/`, {name, lastName, email, password})
       .then(response => {
-        localStorage.setItem('userToken', response.data)
+        localStorage.setItem('token', response.data)
         browserHistory.push('/')
       })
       .catch(err => {
@@ -48,28 +48,28 @@ export default class New extends React.Component {
               <form onSubmit={this.postData}>
                 <Input
                   formType={'text'}
-                  attributeName={'firstName'}
+                  name={'name'}
                   placeholder={'First Name'}
-                  value={this.state.firstName}
+                  value={this.state.name}
                   onChange={this.onChange}
                 />
                 <Input
                   formType={'text'}
-                  attributeName={'lastName'}
+                  name={'lastName'}
                   placeholder={'Last Name'}
                   value={this.state.lastName}
                   onChange={this.onChange}
                 />
                 <Input
                   formType={'text'}
-                  attributeName={'email'}
+                  name={'email'}
                   placeholder={'Enter Email'}
                   value={this.state.email}
                   onChange={this.onChange}
                 />
                 <Input
                   formType={'password'}
-                  attributeName={'password'}
+                  name={'password'}
                   placeholder={'Enter Password'}
                   value={this.state.password}
                   onChange={this.onChange}

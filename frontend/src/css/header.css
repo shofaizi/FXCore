@@ -60,6 +60,10 @@ li .signin {
   height: 100%;
 }
 
+.user-loggin {
+  display: flex;
+}
+
 @media screen and (max-width:480px) {
   .navbar-logo {
     /*display: flex;*/

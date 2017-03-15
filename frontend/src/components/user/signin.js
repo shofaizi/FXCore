@@ -3,6 +3,7 @@ import '../../css/signin.css';
 import axios from 'axios';
 import FormInput from './formInput';
 import { Router, browserHistory }  from 'react-router';
+import fxcore from '../../images/fxcore.png';
 
 export default class SignIn extends React.Component {
   constructor(props){
@@ -18,9 +19,11 @@ export default class SignIn extends React.Component {
   postData(e) {
     e.preventDefault();
     const {email, password} = this.state;
+    console.log(email, password);
     axios.post(`http://localhost:8080/user/login`, {email, password})
       .then(response => {
-        localStorage.setItem('userToken', response.data)
+        console.log(response);
+        localStorage.setItem('myToken', response.data);
         browserHistory.push('/')
       })
       .catch(err => {
@@ -32,26 +35,26 @@ export default class SignIn extends React.Component {
     this.setState(params)
   }
 
-  
+
   render() {
     return (
       <div className='signin-layout'>
         <div className='logo-display'>
-          <img src='fxcore.png' alt="#"/>
+          <img src={fxcore} alt="#"/>
         </div>
 
         <div className='signin-wrapper'>
-          <form onSubmit={this.postData}  className='signin-form'>
+          <form onSubmit={this.postData} className='signin-form'>
             <FormInput
               formType={'text'}
-              attributeName={'email'}
+              name={'email'}
               placeholder='Email Address'
               value={this.state.email}
               onChange={this.onChange}
             />
             <FormInput
               formType={'password'}
-              attributeName={'password'}
+              name={'password'}
               placeholder={'Enter Password'}
               value={this.state.password}
               onChange={this.onChange}

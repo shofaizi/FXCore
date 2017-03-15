@@ -2,6 +2,7 @@ import React from 'react';
 import NewsItem from './newsitem';
 import R from 'ramda';
 import '../../css/news.css';
+import world from '../../images/world.jpeg';
 
 export default class NewsItems extends React.Component {
 
@@ -83,7 +84,7 @@ export default class NewsItems extends React.Component {
           {this.renderArticleSection(financialTimesArticles, "Financial Times")}
         </div>
         <div className='backgroundImage'>
-          <img src='world.jpeg' alt="#"/>
+          <img src={world} alt="#"/>
         </div>
         <div className='news-items'>
           {this.renderArticleSection(bloombergArticles, "Bloomberg")}

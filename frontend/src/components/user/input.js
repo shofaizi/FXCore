@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Input = ({ onChange, formType, placeholder, value, attributeName }) => {
+const Input = ({ onChange, formType, placeholder, value, name }) => {
  const onChangeWrapper = (e) => {
    e.preventDefault()
    const valueFromInput = e.target.value
    let params = {}
-   params[attributeName] = valueFromInput
+   params[name] = valueFromInput
 
    onChange(params)
  }
@@ -13,7 +13,9 @@ const Input = ({ onChange, formType, placeholder, value, attributeName }) => {
     <input
       type={formType}
       value={value}
-      placeholder={placeholder} onChange={onChangeWrapper}
+      placeholder={placeholder}
+      name={name}
+      onChange={onChangeWrapper}
     />
   )
 }
