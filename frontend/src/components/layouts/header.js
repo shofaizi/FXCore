@@ -5,6 +5,10 @@ import Auth from '../../utils/auth';
 import fxcore from '../../images/fxcore.png'
 
 export default class Header extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
   render () {
     return (
       <div className='navbar'>
@@ -19,7 +23,7 @@ export default class Header extends React.Component {
               <Link to='/news'>FXNews</Link>
             </li>
             {Auth.isUserAuthenticated() ? (
-              <li onClick={Auth.deauthenticateUser()}>
+              <li onClick={Auth.deauthenticateUser}>
                 <Link to="/">Log out</Link>
               </li>
             ) : (

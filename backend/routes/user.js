@@ -8,6 +8,8 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var config = require('../config/index.js');
 
+var requireSignin = passport.authenticate('local', {session: false});
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -18,7 +20,8 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use(new LocalStrategy({
+passport.use(new LocalStrategy(
+  {
     usernameField: 'email',
     passwordField: 'password'
   },
@@ -29,7 +32,7 @@ passport.use(new LocalStrategy({
         return done(null, false, { message: 'Incorrect email or password' });
       }
 
-      bcrypt.compare(password, user.hashedPassword, function(err, res) {
+      bcrypt.compare(password, user.password, function(err, res) {
         if(res) {
           return done(null,user);
         } else {
@@ -57,11 +60,10 @@ router.post('/', function (req, res, next) {
       res.render('user/new', {errors: err.errors})
     } else {
       const token = jwt.sign(
-        {user: req.body.user},
+        {user: req.body},
         config.secret,
         {expiresIn: 10000}
       );
-      console.log('Post sign up');
       res.json(token);
     }
   });
@@ -72,17 +74,16 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post(
-  '/login',
+  '/login', requireSignin,
   passport.authenticate('local'),
   function (req, res, next) {
     console.log('Post passport');
     const token = jwt.sign(
-      {user: req.body.user},
+      {user: req.body},
       config.secret,
       {expiresIn: 10000}
     );
-    console.log(req.body);
-    res.json(token);
+    res.send({token: token});
   }
 )
 

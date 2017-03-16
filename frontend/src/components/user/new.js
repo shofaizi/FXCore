@@ -3,6 +3,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import Input from './input';
 import '../../css/signup.css';
+import {basil} from '../../utils/persistence';
 
 export default class New extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class New extends React.Component {
     const {name, lastName, email, password} = this.state;
     axios.post(`http://localhost:8080/user/`, {name, lastName, email, password})
       .then(response => {
-        localStorage.setItem('token', response.data)
+        basil.set('token', response.data)
         browserHistory.push('/')
       })
       .catch(err => {

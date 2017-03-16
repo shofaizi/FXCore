@@ -10,7 +10,8 @@ import Welcome from './components/home/welcome';
 import './css/index.css';
 import Auth from './utils/auth';
 
-
+import {basil} from './utils/persistence'
+console.log("current BASIL-token", basil.get('token'))
 
 ReactDOM.render((
   <Router history={browserHistory}>

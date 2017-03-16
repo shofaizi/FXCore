@@ -2,8 +2,9 @@ import React from 'react';
 import '../../css/signin.css';
 import axios from 'axios';
 import FormInput from './formInput';
-import { Router, browserHistory }  from 'react-router';
+import { browserHistory }  from 'react-router';
 import fxcore from '../../images/fxcore.png';
+import {basil} from '../../utils/persistence';
 
 export default class SignIn extends React.Component {
   constructor(props){
@@ -19,11 +20,9 @@ export default class SignIn extends React.Component {
   postData(e) {
     e.preventDefault();
     const {email, password} = this.state;
-    console.log(email, password);
     axios.post(`http://localhost:8080/user/login`, {email, password})
       .then(response => {
-        console.log(response);
-        localStorage.setItem('myToken', response.data);
+        basil.set('token', response.data.token)
         browserHistory.push('/')
       })
       .catch(err => {
@@ -34,7 +33,6 @@ export default class SignIn extends React.Component {
   onChange(params) {
     this.setState(params)
   }
-
 
   render() {
     return (

@@ -1,35 +1,21 @@
+import {basil} from './persistence'
+import R from 'ramda'
+
 class Auth {
-
-  // module.exports = function(token) {
-  //   let invalidateToken = (token) => {
-  //     if(!token) {
-  //       return true;
-  //     }
-  //   }
-  //   return function (nextState, replace) {
-  //     if (invalidateToken(token)) {
-  //       replace({
-  //         pathname: 'user/signin',
-  //         state: { nextPathName: nextState.location.pathname}
-  //       });
-  //     }
-  //   }
-  // }
-
   // static authenticateUser(token) {
   //   localStorage.setItem('token', token);
   // }
 
   static isUserAuthenticated() {
-    return localStorage.getItem('token') !== null;
+    return !R.isNil(basil.get('token'))
   }
 
   static deauthenticateUser() {
-    localStorage.removeItem('token');
+    basil.set('token', null)
   }
 
   static getToken() {
-    return localStorage.getItem('token');
+    return basil.get('token')
   }
 }
 
