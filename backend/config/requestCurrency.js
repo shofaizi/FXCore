@@ -12,9 +12,28 @@
 
     var date = new Date();
     var currentDate = date.toISOString().slice(0,10);
+    // console.log(date);
+
+    // var yesterday = date.getDate();
+    // var month = date.getMonth();
+    // var convertMonth = function() {
+    //   if(month < 10) {
+    //     month = '0' + month;
+    //     console.log(month)
+    //   }
+    //   if(yesterday < 10) {
+    //     yesterday = '0' + yesterday;
+    //     console.log(yesterday)
+    //   }
+    // }();
+    // var year = date.getFullYear();
+    //
+    // var complete = year + '-' + month + '-' + yesterday;
+    // console.log(complete)
 
     currencyArr.map((item) => {
       var newURL = `${apiURL}${currentDate}?base=${item}`;
+      // var newURL = `${apiURL}${complete}?base=${item}`;
       axios.get(newURL)
       .then(res => {
         var rates = res.data.rates;
@@ -44,7 +63,8 @@
 
   var laterFunction = function() {
     // later.date.localTime()
-    var time = later.parse.text('every 12 hrs');
+    // var time = later.parse.text('every 30 sec');
+    var time = later.parse.text('at 4:00 pm');
     var schedule = later.schedule(time);
     later.setInterval(individualRequests, time);
   }
