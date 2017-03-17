@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var axios = require('axios');
+var currency = require('../models/currency');
 
 var latestUrl = 'http://api.fixer.io/latest';
 
@@ -21,6 +22,15 @@ router.get('/', loggedIn, function(req, res, next) {
     .catch(function(err) {
       return err;
     });
+});
+
+router.get('/graph', function(req, res, next) {
+  currency.findOne({base: req.query.firstBase, currency: req.query.secondBase, date: '2017-02-15'}, 'value',
+  function(err, data) {
+    console.log(err);
+    console.log(data);
+    res.json({value:data.value})
+  });
 });
 
 module.exports = router;
