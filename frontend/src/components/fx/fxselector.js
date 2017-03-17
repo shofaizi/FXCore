@@ -1,8 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import '../../css/fx.css';
+import Graph from './fxgraph';
+import {basil} from '../../utils/persistence';
 
 let latestUrl = 'http://api.fixer.io/latest';
+let token = basil.get('token');
 
 export default class Selector extends React.Component {
   constructor(props) {
@@ -56,9 +59,29 @@ export default class Selector extends React.Component {
     axios.get(`http://api.fixer.io/latest?base=${this.state.secondBase}`)
       .then(response => {
         this.setState({results: response.data.rates, displayContainer: true})
-        document.querySelector('results').style.display = 'block';
+      });
+
+    axios.get('http://localhost:8080/fx/graph',{
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      params: {
+        firstBase: this.state.firstBase,
+        secondBase: this.state.secondBase,
+        date: '2017-03-16'
+      }
+    })
+      .then(function (response) {
+        let dbResponse = response.data.value;
+        console.log(dbResponse);
       })
-  }
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   calculateCurrency () {
     for(var key in this.state.results) {
@@ -123,6 +146,10 @@ export default class Selector extends React.Component {
             </div>
           </div>
         </div>
+        <Graph
+          firstBase={this.state.firstBase}
+          secondBase={this.state.secondBase}
+        />
       </div>
     )
   }

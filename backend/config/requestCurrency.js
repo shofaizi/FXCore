@@ -12,7 +12,7 @@
 
     var date = new Date();
     var currentDate = date.toISOString().slice(0,10);
-    // console.log(date);
+    // console.log(currentDate);
 
     // var yesterday = date.getDate();
     // var month = date.getMonth();
@@ -50,6 +50,7 @@
                 console.error(err);
               } else {
                 return currency;
+                console.log(currency);
               }
             })
           }
@@ -62,7 +63,6 @@
   }
 
   var laterFunction = function() {
-    // later.date.localTime()
     // var time = later.parse.text('every 30 sec');
     var time = later.parse.text('at 4:00 pm');
     var schedule = later.schedule(time);

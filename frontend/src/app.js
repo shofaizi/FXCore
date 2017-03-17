@@ -5,10 +5,6 @@ import Footer from './components/layouts/footer';
 
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { signedIn: false }
-  }
   render() {
     return (
       <div>
