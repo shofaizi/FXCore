@@ -7,7 +7,6 @@ export default class FxLayout extends React.Component {
     return (
       <div className='main-container'>
         <Selector />
-        <Graph />
       </div>
     )
   }

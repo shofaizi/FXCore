@@ -62,16 +62,16 @@ export default class Selector extends React.Component {
       });
 
     axios.get('http://localhost:8080/fx/graph',{
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
+      // credentials: 'include',
+      // headers: {
+      //   'Accept': 'application/json',
+      //   'Content-Type': 'application/json',
+      //   'Authorization': `Bearer ${token}`
+      // },
       params: {
         firstBase: this.state.firstBase,
         secondBase: this.state.secondBase,
-        date: '2017-03-16'
+        date: '2017-03-17'
       }
     })
       .then(function (response) {

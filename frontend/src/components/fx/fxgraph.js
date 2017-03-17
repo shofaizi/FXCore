@@ -1,54 +1,29 @@
 import React from 'react';
-// import Chart from 'chart.js';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
+
+const data = [
+      {name: 'Page A', uv: 4000},
+      {name: 'Page B', uv: 3000},
+      {name: 'Page C', uv: 2000},
+      {name: 'Page D'},
+      {name: 'Page E', uv: 1890},
+      {name: 'Page F', uv: 2390},
+      {name: 'Page G', uv: 3490},
+];
 
 export default class Graph extends React.Component {
-  // constructor(props){
-  //   super(props)
-  // }
-
-//   let chart = new Chart(canvas,{
-//     type: 'bar',
-//     data: {
-//         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-//         datasets: [{
-//             label: '# of Votes',
-//             data: [12, 19, 3, 5, 2, 3],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255,99,132,1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             yAxes: [{
-//                 ticks: {
-//                     beginAtZero:true
-//                 }
-//             }]
-//         }
-//     }
-//   });
-// );
-
-  render () {
-    return (
-      <div className='graph-container'>
-        <canvas className='canvas'></canvas>
+	render () {
+  	return (
+    	<div>
+        <LineChart width={600} height={200} data={data}
+              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+          <XAxis dataKey="name"/>
+          <YAxis/>
+          <CartesianGrid strokeDasharray="3 3"/>
+          <Tooltip/>
+          <Line connectNulls={true} type='monotone' dataKey='uv' stroke='#8884d8' fill='#8884d8' />
+        </LineChart>
       </div>
-    )
+    );
   }
 }
