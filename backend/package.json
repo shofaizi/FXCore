@@ -22,6 +22,7 @@
     "jsonwebtoken": "^7.3.0",
     "later": "^1.2.0",
     "mongodb": "^2.2.22",
+    "mongoose-timestamp": "^0.6.0",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"

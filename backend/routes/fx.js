@@ -25,11 +25,11 @@ router.get('/', loggedIn, function(req, res, next) {
 });
 
 router.get('/graph', function(req, res, next) {
-  // console.log(req.query);
-  currency.findOne({
+  currency.find({
     base: req.query.firstBase,
     currency: req.query.secondBase,
-    date: req.query.date
+    date: req.query.date,
+    createdAt: {'$gte': new Date('2/3/2017'), '$lt': new Date()}
   },
     'value',
     function(err, data) {

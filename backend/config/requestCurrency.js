@@ -12,10 +12,11 @@
 
     var date = new Date();
     var currentDate = date.toISOString().slice(0,10);
-    // console.log(currentDate);
+    console.log(currentDate);
 
-    // var yesterday = date.getDate();
-    // var month = date.getMonth();
+    // var yesterday = date.getDate()-0;
+    // var month = date.getMonth()+1;
+    // console.log(month);
     // var convertMonth = function() {
     //   if(month < 10) {
     //     month = '0' + month;
@@ -49,8 +50,8 @@
               if(err) {
                 console.error(err);
               } else {
+                console.log('Created at: ', currency.createdAt);
                 return currency;
-                console.log(currency);
               }
             })
           }
@@ -63,7 +64,7 @@
   }
 
   var laterFunction = function() {
-    // var time = later.parse.text('every 30 sec');
+    // var time = later.parse.text('every 20 sec');
     var time = later.parse.text('at 4:00 pm');
     var schedule = later.schedule(time);
     later.setInterval(individualRequests, time);
