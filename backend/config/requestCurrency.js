@@ -45,9 +45,7 @@
               base: res.data.base,
               date: res.data.date,
               currency: key,
-              value: rates[key],
-              // createdAt: moment().zone('-07:00').format()
-              // createdAt: moment(new Date()).zone('-07:00').format()
+              value: rates[key]
             })
 
             currency.save(function (err,currency) {

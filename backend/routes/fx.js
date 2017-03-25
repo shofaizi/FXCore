@@ -29,13 +29,12 @@ router.get('/graph', function(req, res, next) {
   currency.find({
     base: req.query.firstBase,
     currency: req.query.secondBase,
-    // date: req.query.date,
-    // createdAt: moment({'$gte': new Date('2/3/2017'), '$lt': new Date()}).utcOffset(0).format()
-    createdAt: {'$gte': moment('2017-03-02').utcOffset(0).format()}
+    createdAt: {'$gte': moment('2017-03-01').utcOffset(0).format()}
   },
-    'value',
+    ['value','base','currency','createdAt'],
     function(err, data) {
-      console.log({'$gte': moment('2017-03-02').utcOffset(0).format()})
+      // console.log({'$gte': moment('2017-03-02').utcOffset(0).format()})
+      // data.map((a)=>{console.log(a.createdAt)});
       if(err) console.log(err);
       console.log(">>>>>>>>>>>>>>>>");
       console.log(data);
