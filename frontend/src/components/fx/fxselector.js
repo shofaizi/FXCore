@@ -62,20 +62,14 @@ export default class Selector extends React.Component {
       });
 
     axios.get('http://localhost:8080/fx/graph',{
-      // credentials: 'include',
-      // headers: {
-      //   'Accept': 'application/json',
-      //   'Content-Type': 'application/json',
-      //   'Authorization': `Bearer ${token}`
-      // },
       params: {
         firstBase: this.state.firstBase,
-        secondBase: this.state.secondBase,
-        date: '2017-03-17'
+        secondBase: this.state.secondBase
       }
     })
       .then(function (response) {
-        let dbResponse = response.data.value;
+        console.log(response)
+        let dbResponse = response.data;
         console.log(dbResponse);
       })
       .catch(function (error) {
@@ -149,6 +143,7 @@ export default class Selector extends React.Component {
         <Graph
           firstBase={this.state.firstBase}
           secondBase={this.state.secondBase}
+          dbResponse={this.dbResponse}
         />
       </div>
     )
