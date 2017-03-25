@@ -7,7 +7,7 @@ var UserSchema = new Schema({
   lastName: {type: String, trim: true, required:true},
   email: {type: String, trim:true, unique: true, lowercase: true, required:true},
   password: {type: String, required: true},
-},{timestamp: true});
+},{timestamps: true});
 
 UserSchema.pre('save', function(next) {
   var user = this;

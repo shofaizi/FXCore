@@ -2,6 +2,7 @@
   var mongoose = require('mongoose');
   var axios    = require('axios');
   var later    = require('later');
+  // var moment   = require('moment-timezone');
 
   var individualRequests = function() {
     currencyArr = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "GBP", "HKD",
@@ -44,13 +45,17 @@
               base: res.data.base,
               date: res.data.date,
               currency: key,
-              value: rates[key]
+              value: rates[key],
+              // createdAt: moment().zone('-07:00').format()
+              // createdAt: moment(new Date()).zone('-07:00').format()
             })
+
             currency.save(function (err,currency) {
               if(err) {
                 console.error(err);
               } else {
-                console.log('Created at: ', currency.createdAt);
+                console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+                // moment(currency.createdAt).zone('-07:00').format();
                 return currency;
               }
             })
