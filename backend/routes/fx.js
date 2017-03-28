@@ -31,7 +31,7 @@ router.get('/graph', function(req, res, next) {
     currency: req.query.secondBase,
     createdAt: {'$gte': moment('2017-03-01').utcOffset(0).format()}
   },
-    ['value','base','currency','createdAt'],
+    ['value','base','currency','createdAt', 'date'],
     function(err, data) {
       // console.log({'$gte': moment('2017-03-02').utcOffset(0).format()})
       // data.map((a)=>{console.log(a.createdAt)});

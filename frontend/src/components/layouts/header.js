@@ -19,7 +19,7 @@ export default class Header extends React.Component {
               <Link to='/news'>FXNews</Link>
             </li>
             {Auth.isUserAuthenticated() ? (
-              <li onClick={Auth.deauthenticateUser}>
+              <li onClick={() => Auth.deauthenticateUser()}>
                 <Link to="/">Log out</Link>
               </li>
             ) : (

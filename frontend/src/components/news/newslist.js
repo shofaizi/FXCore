@@ -33,7 +33,7 @@ export default class NewsItems extends React.Component {
     const articlesView = collection.map((article, index) => {
       return (
         <NewsItem
-          index={index}
+          key={index}
           authorExist={this.authorExist}
           article={article}
         />

@@ -29,7 +29,8 @@ export default class Selector extends React.Component {
   makeRequest () {
     axios.get(`${latestUrl}`)
     .then(response => {
-      this.setState({rates: response.data.rates, currencies: Object.keys(response.data.rates)});
+      let responsekeys = Object.keys(response.data.rates)
+      this.setState({rates: response.data.rates, currencies: responsekeys, firstBase: responsekeys[0], secondBase: responsekeys[1]});
     })
   }
 
@@ -67,10 +68,9 @@ export default class Selector extends React.Component {
         secondBase: this.state.secondBase
       }
     })
-      .then(function (response) {
-        console.log(response)
-        let dbResponse = response.data;
-        console.log(dbResponse);
+      .then((response) => {
+        this.setState({response: response.data})
+        // console.log(">>>>>>>>>>>>>",response);
       })
       .catch(function (error) {
         console.log(error);
@@ -81,7 +81,7 @@ export default class Selector extends React.Component {
     for(var key in this.state.results) {
       if(this.state.results.hasOwnProperty(key)) {
         if (key === this.state.firstBase){
-          return (parseFloat(this.state.value) / parseFloat(this.state.results[key])).toPrecision(10);
+          return (parseFloat(this.state.value) / parseFloat(this.state.results[key])).toPrecision(8);
         }
       }
     }
@@ -97,9 +97,9 @@ export default class Selector extends React.Component {
               <input className='input' type='text' placeholder='Enter value' onChange={this.onInputValueChange}></input>
             </li>
             <li>
-              <select className='input' onChange={this.onFirstBaseChange}>
+              <select className='input' value={this.state.firstBase} onChange={this.onFirstBaseChange}>
                 {this.state.currencies.map((object, i) => {
-                    return <option key={i}>{object}</option>;
+                    return <option key={i}>{object}</option>
                 })}
               </select>
             </li>
@@ -107,9 +107,9 @@ export default class Selector extends React.Component {
               <i className="fa fa-arrows-h fa-2x" aria-hidden="true"></i>
             </li>
             <li>
-              <select className='input' onChange={this.onSecondBaseChange}>
+              <select className='input' value={this.state.secondBase} onChange={this.onSecondBaseChange}>
                 {this.state.currencies.map((object, i) => {
-                    return <option key={i}>{object}</option>;
+                    return <option key={i}>{object}</option>
                 })}
               </select>
             </li>
@@ -143,7 +143,7 @@ export default class Selector extends React.Component {
         <Graph
           firstBase={this.state.firstBase}
           secondBase={this.state.secondBase}
-          dbResponse={this.dbResponse}
+          dbResponse={this.state.response}
         />
       </div>
     )

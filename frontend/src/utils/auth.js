@@ -1,20 +1,26 @@
 import {basil} from './persistence'
 import R from 'ramda'
 
-class Auth {
+const Auth = {
   // static authenticateUser(token) {
   //   localStorage.setItem('token', token);
   // }
 
-  static isUserAuthenticated() {
+  verifyAuthenticated: (nextState, replace) => {
+    if(replace && !Auth.isUserAuthenticated()) {
+      replace('user/signin')
+    }
+  },
+
+  isUserAuthenticated: () => {
     return !R.isNil(basil.get('token'))
-  }
+  },
 
-  static deauthenticateUser() {
+  deauthenticateUser: () => {
     basil.set('token', null)
-  }
+  },
 
-  static getToken() {
+  getToken: () => {
     return basil.get('token')
   }
 }

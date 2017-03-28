@@ -17,10 +17,11 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path='/' component={App}>
       <IndexRoute component={Welcome}/>
-      <Route path='fx' component={FxLayout} onEnter={Auth.isUserAuthenticated}></Route>
-      <Route path='news' component={News} onEnter={Auth.isUserAuthenticated}></Route>
+      <Route path='fx' component={FxLayout} onEnter={Auth.verifyAuthenticated}></Route>
+      <Route path='news' component={News} onEnter={Auth.verifyAuthenticated}></Route>
       <Route path='user/new' component={NewUser}></Route>
       <Route path='user/signin' component={SignIn}></Route>
+
     </Route>
   </Router>
   ), document.getElementById('root')
