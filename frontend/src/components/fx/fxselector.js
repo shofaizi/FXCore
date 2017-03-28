@@ -122,12 +122,12 @@ export default class Selector extends React.Component {
 
         <div className='results'>
           <div className='result-header'>
-            <h2>FX Currency Converter: {this.state.firstBase} <span>to</span>{this.state.secondBase}</h2>
+            <h2>FX Currency Converter: {this.state.firstBase} <span> to  </span>{this.state.secondBase}</h2>
           </div>
           <div className='result-container'>
             <div className='result-main'>
               <div className='result-convert'>
-                <h3>{this.state.value}{this.state.firstBase} = {this.calculateCurrency()}
+                <h3>{this.state.value}{this.state.firstBase} <span> =</span> {this.calculateCurrency()}
                    {this.state.secondBase}
                 </h3>
               </div>

@@ -5,7 +5,7 @@ import '../../css/fxgraph.css';
 export default class Graph extends React.Component {
 
 	render () {
-    console.log(this.props.dbResponse);
+    // console.log(this.props.dbResponse);
   	return (
     	<div className='graph-container'>
         <LineChart
@@ -17,7 +17,7 @@ export default class Graph extends React.Component {
           <YAxis/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
-          <Line connectNulls={true} type='monotone' dataKey='value' stroke='#8884d8' fill='#8884d8' />
+          <Line connectNulls={false} type='monotone' dataKey='value' stroke='#8884d8' fill='#8884d8' />
         </LineChart>
       </div>
     );

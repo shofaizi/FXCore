@@ -2,13 +2,12 @@
   var mongoose = require('mongoose');
   var axios    = require('axios');
   var later    = require('later');
-  // var moment   = require('moment-timezone');
 
   var individualRequests = function() {
-    currencyArr = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "GBP", "HKD",
-                  "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK",
-                  "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"
-                ];
+                          currencyArr = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "GBP", "HKD",
+                                        "HRK", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK",
+                                        "NZD", "PHP", "PLN", "RON", "RUB", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"
+                                      ];
     var apiURL   = `http://api.fixer.io/`;
 
     var date = new Date();
@@ -53,7 +52,6 @@
                 console.error(err);
               } else {
                 console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-                // moment(currency.createdAt).zone('-07:00').format();
                 return currency;
               }
             })
