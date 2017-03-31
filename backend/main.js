@@ -8,8 +8,8 @@ var passport  = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash     = require('connect-flash');
 var morgan    = require('morgan');
-var requestCurrency = require('./config/requestCurrency');
-var cors = require('express-cors');
+var cors  = require('express-cors');
+var passcode = require('./config/index.js');
 
 var user  = require('./routes/user');
 var index = require('./routes/index');
@@ -47,15 +47,15 @@ app.use('/user', user);
 app.use('/fx', fx);
 app.use('/news', news);
 
-mongoose.connect("mongodb://localhost/fxcore_db");
+// mongoose.connect("mongodb://localhost/fxcore_db");
+var MONGOLAB_URI = `mongodb://${passcode.username}:${passcode.passcode}@ds143980.mlab.com:43980/fxcore_db`
+mongoose.connect(MONGOLAB_URI);
 mongoose.connection.on('connected', function(){
   console.log("MongoDB Connected!");
 });
 
-requestCurrency.laterFunction();
-
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 43980;
 
 app.listen(port, function() {
-  console.log("Listening on port 8080");
+  console.log(`Listening on port ${port}`);
 });

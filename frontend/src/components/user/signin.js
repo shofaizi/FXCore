@@ -20,7 +20,7 @@ export default class SignIn extends React.Component {
   postData(e) {
     e.preventDefault();
     const {email, password} = this.state;
-    axios.post(`http://localhost:8080/user/login`, {email, password})
+    axios.post(`http://fxbackend.herokuapp.com/user/login`, {email, password})
       .then(response => {
         basil.set('token', response.data.token)
         browserHistory.push('/')

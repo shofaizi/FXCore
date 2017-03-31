@@ -21,7 +21,7 @@ export default class New extends React.Component {
   postData(e) {
     e.preventDefault();
     const {name, lastName, email, password} = this.state;
-    axios.post(`http://localhost:8080/user/`, {name, lastName, email, password})
+    axios.post(`http://fxbackend.herokuapp.com/user/`, {name, lastName, email, password})
       .then(response => {
         basil.set('token', response.data)
         browserHistory.push('/')

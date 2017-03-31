@@ -62,7 +62,7 @@ export default class Selector extends React.Component {
         this.setState({results: response.data.rates, displayContainer: true})
       });
 
-    axios.get('http://localhost:8080/fx/graph',{
+    axios.get('http://fxbackend.herokuapp.com/fx/graph',{
       params: {
         firstBase: this.state.firstBase,
         secondBase: this.state.secondBase
@@ -113,8 +113,8 @@ export default class Selector extends React.Component {
                 })}
               </select>
             </li>
-            <li>
-              <input type='submit' value="->"></input>
+            <li className='submit-button'>
+              <input type='submit'></input>
             </li>
           </ul>
         </div>

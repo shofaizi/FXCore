@@ -37,3 +37,8 @@
 .results {
   display: block;
 }
+
+.submit-button > input{
+  background-color: #2b2d45;
+  color: white;
+}

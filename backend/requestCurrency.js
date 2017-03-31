@@ -1,7 +1,15 @@
-  var Currency = require('../models/currency');
+  var Currency = require('./models/currency');
   var mongoose = require('mongoose');
   var axios    = require('axios');
   var later    = require('later');
+  var passcode = require('./config/index');
+
+  var MONGOLAB_URI = `mongodb://${passcode.username}:${passcode.passcode}@ds143980.mlab.com:43980/fxcore_db`
+  mongoose.connect(MONGOLAB_URI);
+  mongoose.connection.on('connected', function(){
+    console.log("MongoDB Connected through requestCurrency!");
+  });
+
 
   var individualRequests = function() {
                           currencyArr = ["AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "GBP", "HKD",
@@ -62,13 +70,17 @@
         console.error(err);
       })
     });
-  }
+  }()
 
-  var laterFunction = function() {
-    // var time = later.parse.text('every 20 sec');
-    var time = later.parse.text('at 4:00 pm');
-    var schedule = later.schedule(time);
-    later.setInterval(individualRequests, time);
-  }
-
-module.exports = {laterFunction}
+ //  var laterFunction = function() {
+ //    console.log('im called inside later function')
+ //    // var time = later.parse.text('every 20 sec');
+ //    // var time = later.parse.text('at 9:05 pm');
+ //    // var time = later.parse.recur().every(60).minute().onWeekday();
+ //    // var time = later.parse.recur().on(13).hour().onWeekday();
+ //    var schedule = later.schedule(time);
+ //    later.setInterval(individualRequests, time);
+ //  }
+ // laterFunction()
+// module.exports = {laterFunction}
+// module.exports = {individualRequests}
